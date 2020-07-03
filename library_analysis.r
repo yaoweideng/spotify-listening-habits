@@ -59,6 +59,7 @@ plot1 <- ggplot(tracks_met, aes(x = date_added, y = measure, group = metric, col
   geom_line() +
   scale_color_manual(values = colors) +
   facet_wrap(~ metric, scales = "free") + 
+  xlab('time')
   ggtitle(title)
 plot1
 plot2
