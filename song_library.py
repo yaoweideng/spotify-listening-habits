@@ -70,8 +70,7 @@ def get_track_info(id, date):
                     'speechiness' : NaN,
                     'tempo' : NaN,
                     'time_signature' : NaN,
-                    'valence' : NaN
-                    }
+                    'valence' : NaN}
  
     acousticness = feats[0]['acousticness']
     danceability = feats[0]['danceability']
@@ -83,7 +82,6 @@ def get_track_info(id, date):
     tempo = feats[0]['tempo']
     time_signature = feats[0]['time_signature']
     valence = feats[0]['valence']
-
 
     track = [name, album, artist, release_date, date_added, length, popularity, 
              acousticness, danceability, energy, instrumentalness, 
@@ -110,4 +108,3 @@ df = pd.DataFrame(tracks, columns =
 
 #%% exporting dataframe into a .csv file
 df.to_csv("song_library.csv", sep = '|')
-
