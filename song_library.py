@@ -1,5 +1,4 @@
 #%% import statements and creating auth token
-import sys
 import spotipy
 import spotipy.util as util
 import pandas as pd
