@@ -95,7 +95,6 @@ dates = get_add_dates()
 #%% getting all the track info into a dataframe
 tracks = []
 
-#%%
 for i in range(len(ids)):
     track = get_track_info(ids[i], dates[i])
     tracks.append(track)
