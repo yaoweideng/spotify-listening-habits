@@ -4,6 +4,7 @@
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(viridis)
 source("directory.r")
 
 # function definitions ----------------------------------------------------
@@ -50,13 +51,11 @@ avgs$playlist <- factor(avgs$playlist, levels = years)
 
 # visualizations ----------------------------------------------------------
 
-colors <- c('firebrick', 'aquamarine2', 'skyblue', 'green4', 'violet')
 p1 <- ggplot(avgs, aes(x = playlist, y = measure, group = playlist, fill = playlist)) + 
   geom_bar(stat = 'identity') +
-  scale_color_manual(values = colors) +
+  scale_fill_viridis(discrete = TRUE) +
   facet_wrap(~ metric, scales = "free") +
   ggtitle('average metric values of songs in summer playlists through the years') +
-  scale_fill_discrete(breaks = years) +
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         axis.title.x = element_blank())

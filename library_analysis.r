@@ -4,6 +4,7 @@
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(viridis)
 source("directory.r")
 
 # function definitions ----------------------------------------------------
@@ -52,7 +53,7 @@ tracks_200_avg <- data.frame(tracks_200_avg[1:6], apply(tracks_200_avg[7:12], 2,
 tracks_200_avg <- tracks_200_avg %>%
   drop_na()
 
-# visualizations ----------------------------------------------------------
+# visualizations pt. 1 ----------------------------------------------------------
 
 metrics <- c('popularity', 'acousticness', 'danceability', 'energy', 'liveness', 'valence')
 colors <- c('firebrick', 'aquamarine2', 'skyblue', 'green4', 'gold', 'violet')
@@ -83,7 +84,22 @@ plot4 <- ggplot(tracks_200_avg, aes(x = date_added, y = measure, group = metric,
   scale_color_manual(values = colors) +
   facet_wrap(~ metric, scales = "free") + 
   xlab('date')
+
+# visualizations pt. 2 ----------------------------------------------------
+
+dens <- c('valence', 'danceability')
+tracks_dens <- gather(tracks, key = metric, value = measure, dens)
+plot5 <- ggplot(tracks_dens, aes(x = measure, color = metric, fill = metric)) +
+  geom_histogram(aes(y = ..density..), binwidth = 0.01, position = 'identity', alpha = 0.4) +
+  geom_density(alpha = 0.6) +
+  scale_color_manual(values = c("black", "black")) +
+  scale_fill_manual(values = c("seagreen2", "skyblue")) +
+  ggtitle("comparing densities between song danceability and song valence in library")
+
+# see plots ---------------------------------------------------------------
+
 plot1
 plot2
 plot3
 plot4
+plot5
