@@ -101,7 +101,11 @@ genre_names <- as.character(most_pop_genres2$genre)
 genres_avg <- get_avg_genre(tracks_genre, genre_names) %>%
   drop_na()
 genres_avg <- gather(genres_avg, key = genre, value = measure, genre_names)
-c_pop_indices <- which(tracks$artist_genre1 == 'c-pop')
+
+# processing pt. 4 --------------------------------------------------------
+
+tracks_has_pop <- tracks[which(tracks$popularity != 0),]
+fit <- lm(data = tracks_has_pop, popularity ~ artist_popularity)
 
 # visualizations pt. 1 ----------------------------------------------------------
 
@@ -165,6 +169,15 @@ plot8 <- ggplot(genres_avg, aes(x = date_added, y = measure, group = genre, colo
   ylab('percentage of Spotify library') +
   theme(axis.title.x = element_blank())
 
+# visualizations pt. 4 ----------------------------------------------------
+
+plot9 <- ggplot(tracks_has_pop, aes(artist_popularity, popularity)) +
+  geom_point(size = 0.5) + 
+  stat_smooth(method = 'lm', color = "aquamarine2", formula = y ~ x) +
+  xlab("artist popularity") +
+  ylab("track popularity") +
+  ggtitle("linear regression line, track vs artist popularity in library")
+
 # see plots ---------------------------------------------------------------
 
 plot1
@@ -175,3 +188,4 @@ plot5
 plot6
 plot7
 plot8
+plot9

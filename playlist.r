@@ -53,7 +53,7 @@ avgs$playlist <- factor(avgs$playlist, levels = years)
 
 p1 <- ggplot(avgs, aes(x = playlist, y = measure, group = playlist, fill = playlist)) + 
   geom_bar(stat = 'identity') +
-  scale_fill_viridis(discrete = TRUE) +
+  scale_fill_viridis(discrete = TRUE, option = 'plasma') +
   facet_wrap(~ metric, scales = "free") +
   ggtitle('average metric values of songs in summer playlists through the years') +
   theme(axis.text.x = element_blank(),

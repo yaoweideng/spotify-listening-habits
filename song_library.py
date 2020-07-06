@@ -117,3 +117,5 @@ df = pd.DataFrame(tracks, columns =
 
 #%% exporting dataframe into a .csv file
 df.to_csv("song_library.csv", sep = '|')
+ids = pd.DataFrame(ids)
+ids.to_csv("track_ids.csv", index = False)
