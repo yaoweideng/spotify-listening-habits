@@ -1,1 +1,1 @@
-![](plot3.gif)
+![](assets/plot3.gif)
