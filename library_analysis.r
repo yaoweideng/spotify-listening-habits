@@ -130,7 +130,7 @@ plot3 <- ggplot(tracks_200_avg, aes(x = date_added, y = measure, group = metric,
   ylab('measure') + 
   ggtitle('rolling 200-song average metric values of Spotify library over time') +
   theme(axis.title.x = element_blank())
-
+  
 plot4 <- ggplot(tracks_200_avg, aes(x = date_added, y = measure, group = metric, color = metric)) + 
   geom_line() +
   scale_color_manual(values = colors) +
