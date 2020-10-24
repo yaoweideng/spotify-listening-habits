@@ -1,4 +1,3 @@
-
 # import packages -------------------------------------------------------
 
 library(dplyr)
@@ -100,7 +99,7 @@ most_pop_genres2 <- most_pop_genres %>%
 genre_names <- as.character(most_pop_genres2$genre)
 genres_avg <- get_avg_genre(tracks_genre, genre_names) %>%
   drop_na()
-genres_avg <- gather(genres_avg, key = genre, value = measure, genre_names)
+genres_avg <- gather(genres_avg, key = genre, value = measure, all_of(genre_names))
 
 # processing pt. 4 --------------------------------------------------------
 
@@ -180,12 +179,12 @@ plot9 <- ggplot(tracks_has_pop, aes(artist_popularity, popularity)) +
 
 # see plots ---------------------------------------------------------------
 
-plot1
-plot2
-plot3
-plot4
-plot5
-plot6
-plot7
-plot8
-plot9
+#plot1
+#plot2
+#plot3
+#plot4
+#plot5
+#plot6
+#plot7
+#plot8
+#plot9

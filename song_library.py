@@ -104,7 +104,7 @@ artists = get_ids(3)
 #%% getting all the track info into a dataframe
 tracks = []
 
-for i in range(len(ids)):
+for i in range(0,10):
     track = get_track_info(ids[i], dates[i], artists[i])
     tracks.append(track)
 
